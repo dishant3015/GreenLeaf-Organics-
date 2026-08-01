@@ -217,7 +217,7 @@ a:hover {
 
 .about-heading h1 {
     font-size: 80px;
-    text-align: end;
+    text-align: left;
 }
 
 .black-box.fullscreen {
@@ -322,8 +322,8 @@ body.no-scroll {
     object-fit: contain;
 }
 
-.flip img:nth-child(1) {animation: show 1s infinite -0.5s;}
-.flip img:nth-child(2) {animation: show 1s infinite 0s;}
+.flip img:nth-child(1) {animation: show 0.6s infinite -0.3s;}
+.flip img:nth-child(2) {animation: show 0.6s infinite 0s;}
 
 @keyframes show {
     0%, 49.9% {opacity: 0;}
@@ -331,9 +331,9 @@ body.no-scroll {
     100% {opacity: 0;}
 }
 
-.products header {
+.products-header {
     font-size: 40px;
-    text-align: left;
+    text-align: right;
 }
 
 .tables-layout {
@@ -379,6 +379,11 @@ body.no-scroll {
     color: black;
 }
 
+.service h1 {
+    font-size: 70px;
+    text-align: left;
+}
+
 
 .input-list {
     list-style: none;
@@ -386,7 +391,7 @@ body.no-scroll {
 }
 
 .input-list li {
-    text-align: right;
+    text-align: left;
 }
 
 .dropdown-toggle {
@@ -479,3 +484,12 @@ body.no-scroll {
     height: 100vh;
     width: 100%;
 }
+
+.container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    color: white;
+}
+
