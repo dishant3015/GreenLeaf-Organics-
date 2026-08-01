@@ -1,0 +1,481 @@
+@font-face {
+    font-family: Clash-Semibold;
+    src: url(ClashGrotesk-Semibold.otf);
+}
+@font-face {
+    font-family: Clash-Bold;
+    src: url(ClashGrotesk-Bold.otf);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Clash-Semibold;
+    margin: 0;
+    padding: 0;
+}
+
+.heading-and-logo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 5px;
+    grid-template-areas: "comp-name logo";
+    height: 100px;
+}
+
+.comp-name {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    font-size: 25px;
+    user-select: none;
+    padding-left: 20px;
+}
+
+.logo {
+    display: flex;
+    justify-content: end;
+}
+
+.logo img {
+    width: 200px;
+    height: 100px;
+    border-radius: 20px;
+}
+
+.navigation-bar {
+    display: block;
+    height: 100px;
+    align-content: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+a {
+    font-size: 20px;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    user-select: none;
+    color: black;
+
+}
+
+a:hover {
+    transform: scale(1.4);
+}
+
+.featured {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px;
+    flex-wrap: wrap;
+}
+
+.offer-cards {
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.offer-cards:hover {
+    transform: scale(1.05);
+}
+
+.price {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+
+
+.home {
+    width: 100%;
+    padding: 20px 0;
+    margin-top: 50px;
+    overflow: auto;
+    scrollbar-width: none;
+    scroll-margin-top: 60px;
+}
+
+.home::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    flex: 0 0 auto;
+    display: flex;
+    border-radius: 20px;
+    margin: 0 10px;
+}
+
+.card img {
+    width: 100vw;
+    height: 60vh;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.carousel {
+    display: flex;
+    width: max-content;
+    animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+    0%   { transform: translateX(0); }        
+    20%  { transform: translateX(0); } 
+    25%  { transform: translateX(-100vw); }   
+    45%  { transform: translateX(-100vw); }   
+    50%  { transform: translateX(-200vw); }   
+    70%  { transform: translateX(-200vw); }   
+    75%  { transform: translateX(-300vw); }   
+    95%  { transform: translateX(-300vw); }   
+    100% { transform: translateX(-400vw); } 
+}
+
+.about {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: auto;
+    scrollbar-width: none;
+    scroll-margin-top: 60px;
+    user-select: none;
+}
+
+.about::-webkit-scrollbar {
+    display: none;
+}
+
+.side-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 25px;
+    color: black;
+}
+
+.side-text--left {
+    left: 5%;
+    text-align: left;
+}
+
+.side-text--right {
+    right: 5%;
+    text-align: right;
+}
+
+.black-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 80px;
+    height: 140px;
+    background: black;
+    border-radius: 20px;
+    overflow: hidden;
+
+    transition: width 0.08s ease-out, height 0.08s ease-out;
+}
+
+.box-content {
+    position: relative;
+    min-height: 100vh;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: top;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+}
+
+.about-heading {
+    display: block;
+    height: 200px;
+    width: 100%;
+    margin-bottom: auto;
+}
+
+.about-heading h1 {
+    font-size: 80px;
+    text-align: end;
+}
+
+.black-box.fullscreen {
+    border-radius: 0;
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.black-box.fullscreen::-webkit-scrollbar {
+    display: none;
+}
+
+.black-box.opened .box-content {
+    opacity: 1;
+    pointer-events: auto;
+}
+body.no-scroll {
+    overflow: hidden;
+}
+
+.mouse-icon {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+}
+
+.mouse-icon img {
+    width: 100px;
+    height: 50px;
+    z-index: -1;
+}
+
+.box-content article {
+    font-size: 15px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.black-box.fullscreen .box-content article {
+    opacity: 1;
+}
+
+.b-1 {
+    grid-area: b-1;
+}
+.b-2 {
+    grid-area: b-2;
+}
+.b-3 {
+    grid-area: b-3;
+}
+.b-4 {
+    grid-area: b-4;
+}
+
+.bb-layout {
+    display: grid;
+    grid-template-columns: 500px 500px;
+    grid-template-rows: 300px 300px;
+    gap: 10px;
+    padding-top: 20px;
+    grid-template-areas: 
+    "b-1 b-2"
+    "b-3 b-4";
+    justify-content: center;
+}
+
+.b-1 p {
+    text-align: center;
+    font-size: 20px;
+}
+
+.b-4 h1 {
+    font-family: Clash-Bold;
+}
+
+.b-4 h1, p {
+    text-align: center;
+}
+
+.b-4 h1 {
+    font-size: 40px;
+}
+
+.b-4 p {
+    font-size: 20px;
+}
+
+.flip {
+    overflow: hidden;
+    display: grid;
+}
+
+.flip img {
+    grid-area: 1 / 1;
+    opacity: 0;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.flip img:nth-child(1) {animation: show 1s infinite -0.5s;}
+.flip img:nth-child(2) {animation: show 1s infinite 0s;}
+
+@keyframes show {
+    0%, 49.9% {opacity: 0;}
+    50%, 99.9% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.products header {
+    font-size: 40px;
+    text-align: left;
+}
+
+.tables-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 100vh;
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.tables-layout h1 {
+    color: black;
+    font-size: 30px;
+    margin: 20px;
+}
+
+.vege-list, .fruit-list, .dairy-products {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.vege-list th, .vege-list td, .fruit-list th, .fruit-list td,
+.dairy-products th, .dairy-products td {
+    border: 3px solid black;
+    padding: 15px 30px;
+    text-align: center;
+}
+
+.vege-list th, .fruit-list th,
+.dairy-products th {
+    font-family: Clash-Bold;
+    font-size: 20px;
+    width: 50%;
+}
+
+.vege-list tr, .fruit-list tr, .dairy-products tr {
+    color: black;
+}
+
+
+.input-list {
+    list-style: none;
+    padding: 0;
+}
+
+.input-list li {
+    text-align: right;
+}
+
+.dropdown-toggle {
+    font-size: 40px;
+    color: white;
+}
+
+.dropdown-box {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    margin-top: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.dropdown-box.open {
+    max-height: 500px;
+    padding: 20px;
+    margin-top: 10px;
+
+}
+
+.dropdown-box input {
+    border-radius: 4px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: Clash-Semibold;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.submit {
+    border: none;
+    color: black;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: Clash-Semibold;
+}
+
+.submit:hover {
+    background-color: black;
+    color: white;
+}
+
+.testimonials header {
+    font-size: 40px;
+    text-align: right;
+}
+
+.testimonial-layout {
+    display: grid;
+    grid-template-columns: 700px;
+    grid-template-rows: 500px;
+    gap: 20px;
+    padding-top: 20px;
+    grid-template-areas: "t-box-1 t-box-2";
+    justify-content: center;
+}
+
+.testimonial-layout aside {
+    color: white;
+    font-size: 30px;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+    padding-left: 40px;
+}
+
+.t-box-1 {
+    grid-area: t-box-1;
+    position: relative;
+    padding-top: 70px;
+}
+
+.t-box-2 {
+    grid-area: t-box-2;
+    width: 700px;
+    position: relative;
+    padding: 70px;
+}
+
+.t-box-2 aside {
+    text-align: right;
+}
+
+.contact {
+    height: 100vh;
+    width: 100%;
+}
