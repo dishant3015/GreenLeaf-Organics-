@@ -103,7 +103,7 @@
               }
 
               // Wait a tiny bit for the page to align before starting the box animation
-              setTimeout(animateOpen, 400); 
+              setTimeout(animateOpen, 200); 
           });
       }
 
@@ -133,7 +133,7 @@
               }
 
               // Wait a tiny bit for the page to align before starting the box animation
-              setTimeout(animateOpen, 400); 
+              setTimeout(animateOpen, 200); 
           });
       }
 
@@ -163,9 +163,41 @@
               }
 
               // Wait a tiny bit for the page to align before starting the box animation
-              setTimeout(animateOpen, 400); 
+              setTimeout(animateOpen, 200); 
+          });
+
+      }
+
+      const contactLink = document.querySelector('a[href="#Contact"]');
+      const contactArticle = document.querySelector('.contact');
+
+      if (contactLink && contactArticle) {
+          contactLink.addEventListener('click', function (e) {
+              e.preventDefault(); // Stops the sudden jump
+
+              // 1. Gently scroll the main page to the About section first
+              document.getElementById('About').scrollIntoView({ behavior: 'smooth' });
+
+              // 2. Function to smoothly grow the black box
+              const max = getMaxSize();
+              function animateOpen() {
+                  if (size < max) {
+                      size += 40; // Adjust this number to change expansion speed
+                      clampAndRender();
+                      requestAnimationFrame(animateOpen);
+                  } else {
+                      // 3. Once fully open, glide down to the Products lists
+                      setTimeout(() => {
+                          contactArticle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }, 300); // Brief pause to let the box finish opening
+                  }
+              }
+
+              // Wait a tiny bit for the page to align before starting the box animation
+              setTimeout(animateOpen, 200); 
           });
       }
+
 
     })();
 

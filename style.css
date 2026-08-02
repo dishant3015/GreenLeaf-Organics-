@@ -490,17 +490,68 @@ body.no-scroll {
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
-    color: white;
+    z-index: 1;
 }
 
-.contact-bg {
+.flip-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    display: grid;
     z-index: 0;
-    opacity: 1;
+    filter: blur(4px);
 }
 
+.flip-bg img {
+    grid-area: 1/1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+}
+
+.flip-bg img:nth-child(1) {animation: blinkShow 1.2s infinite -0.4s;}
+.flip-bg img:nth-child(2) {animation: blinkShow 1.2s infinite 0s;}
+.flip-bg img:nth-child(3) {animation: blinkShow 1.2s infinite 0.4s;}
+
+@keyframes blinkShow {
+    0%, 33.33% {opacity: 1;}
+    33.4%, 100% {opacity: 0;}
+}
+
+.contact-info {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-info h1 {
+    font-size: 120px;
+    font-family: Clash-Bold;
+}
+
+.contact-info p {
+    font-size: 20px;
+    color: grey;
+}
+
+.contact-info h6 {
+    font-size: 15px;
+    font-family: Clash-Bold;
+}
+
+.footer {
+    display: block;
+    min-height: 140px;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.footer h6 {
+    color: black;
+}
+
+.copyright p {
+    color: black;
+}
