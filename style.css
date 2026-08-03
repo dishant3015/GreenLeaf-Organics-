@@ -258,7 +258,7 @@ body.no-scroll {
     transition: opacity 0.5s ease;
 }
 
-.black-box.fullscreen .box-content article {
+.black-box.opened .box-content article {
     opacity: 1;
 }
 

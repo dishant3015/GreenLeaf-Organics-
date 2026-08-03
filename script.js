@@ -4,7 +4,7 @@
 
       const MIN_SIZE        = 200;   
       const SCROLL_FACTOR   = 0.4; 
-      const THRESHOLD_RATIO = 0.8;  
+      const THRESHOLD_RATIO = 0.95;  
       const box = document.getElementById('box');
       let size = MIN_SIZE;
 
