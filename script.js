@@ -1,27 +1,23 @@
-// JavaScript file is all AI
 
 (function () {
       'use strict';
 
-      // ── Config ──
-      const MIN_SIZE        = 200;   // px — starting / minimum dimension
-      const SCROLL_FACTOR   = 0.4;  // px added per wheel delta unit
-      const THRESHOLD_RATIO = 0.8;  // fraction of viewport — "opened" state
-
+      const MIN_SIZE        = 200;   
+      const SCROLL_FACTOR   = 0.4; 
+      const THRESHOLD_RATIO = 0.8;  
       const box = document.getElementById('box');
       let size = MIN_SIZE;
 
-      /** Max square size: full viewport (100vw × 100vh). */
+      
       function getMaxSize() {
         return Math.max(window.innerWidth, window.innerHeight / 1.75 );
       }
 
-      /** Size at which inner content fades in. */
+      
       function getThreshold() {
         return Math.min(window.innerWidth, window.innerHeight) * THRESHOLD_RATIO;
       }
 
-      /** Apply size to the box and toggle opened state. */
       function render() {
 
         let boxWidth = Math.min(size, window.innerWidth);
@@ -45,13 +41,11 @@
         }
       }
 
-      /** Clamp size between min and max, then re-render. */
       function clampAndRender() {
         size = Math.max(MIN_SIZE, Math.min(size, getMaxSize()));
         render();
       }
 
-      // ── 4. Wheel: resize box, prevent page scroll ──
       box.addEventListener('wheel', function (e) {
 
         if (size >= getMaxSize()) {
@@ -65,18 +59,14 @@
 
         e.preventDefault();
 
-        // deltaY > 0 → scroll down → grow; deltaY < 0 → scroll up → shrink
         size += e.deltaY * SCROLL_FACTOR;
         clampAndRender();
       }, { passive: false });
 
-      // Re-clamp on resize so box stays within new viewport bounds
       window.addEventListener('resize', clampAndRender);
 
-      // Initial paint
       render();
 
-      // ── Smooth Scroll & Auto-Open for Products Link ──
       const productsLink = document.querySelector('a[href="#Products"]');
       const productsArticle = document.querySelector('.products');
 
@@ -84,21 +74,18 @@
           productsLink.addEventListener('click', function (e) {
               e.preventDefault(); // Stops the sudden jump
 
-              // 1. Gently scroll the main page to the About section first
               document.getElementById('About').scrollIntoView({ behavior: 'smooth' });
 
-              // 2. Function to smoothly grow the black box
               const max = getMaxSize();
               function animateOpen() {
                   if (size < max) {
-                      size += 40; // Adjust this number to change expansion speed
+                      size += 40; 
                       clampAndRender();
                       requestAnimationFrame(animateOpen);
                   } else {
-                      // 3. Once fully open, glide down to the Products lists
                       setTimeout(() => {
                           productsArticle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                      }, 300); // Brief pause to let the box finish opening
+                      }, 300);
                   }
               }
 
@@ -112,27 +99,24 @@
 
       if (serviceLink && serviceArticle) {
           serviceLink.addEventListener('click', function (e) {
-              e.preventDefault(); // Stops the sudden jump
+              e.preventDefault(); 
 
-              // 1. Gently scroll the main page to the About section first
               document.getElementById('About').scrollIntoView({ behavior: 'smooth' });
 
-              // 2. Function to smoothly grow the black box
               const max = getMaxSize();
               function animateOpen() {
                   if (size < max) {
-                      size += 40; // Adjust this number to change expansion speed
+                      size += 40;
                       clampAndRender();
                       requestAnimationFrame(animateOpen);
                   } else {
-                      // 3. Once fully open, glide down to the Products lists
+                        
                       setTimeout(() => {
                           serviceArticle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                      }, 300); // Brief pause to let the box finish opening
+                      }, 300); 
                   }
               }
 
-              // Wait a tiny bit for the page to align before starting the box animation
               setTimeout(animateOpen, 200); 
           });
       }
@@ -142,27 +126,24 @@
 
       if (testimonialLink && testimonialArticle) {
           testimonialLink.addEventListener('click', function (e) {
-              e.preventDefault(); // Stops the sudden jump
+              e.preventDefault(); 
 
-              // 1. Gently scroll the main page to the About section first
               document.getElementById('About').scrollIntoView({ behavior: 'smooth' });
 
-              // 2. Function to smoothly grow the black box
               const max = getMaxSize();
               function animateOpen() {
                   if (size < max) {
-                      size += 40; // Adjust this number to change expansion speed
+                      size += 40; 
                       clampAndRender();
                       requestAnimationFrame(animateOpen);
                   } else {
-                      // 3. Once fully open, glide down to the Products lists
+                      
                       setTimeout(() => {
                           testimonialArticle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                      }, 300); // Brief pause to let the box finish opening
+                      }, 300); 
                   }
               }
 
-              // Wait a tiny bit for the page to align before starting the box animation
               setTimeout(animateOpen, 200); 
           });
 
@@ -173,27 +154,24 @@
 
       if (contactLink && contactArticle) {
           contactLink.addEventListener('click', function (e) {
-              e.preventDefault(); // Stops the sudden jump
+              e.preventDefault(); 
 
-              // 1. Gently scroll the main page to the About section first
               document.getElementById('About').scrollIntoView({ behavior: 'smooth' });
 
-              // 2. Function to smoothly grow the black box
               const max = getMaxSize();
               function animateOpen() {
                   if (size < max) {
-                      size += 40; // Adjust this number to change expansion speed
+                      size += 40; 
                       clampAndRender();
                       requestAnimationFrame(animateOpen);
                   } else {
-                      // 3. Once fully open, glide down to the Products lists
+                      
                       setTimeout(() => {
                           contactArticle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                      }, 300); // Brief pause to let the box finish opening
+                      }, 300); 
                   }
               }
 
-              // Wait a tiny bit for the page to align before starting the box animation
               setTimeout(animateOpen, 200); 
           });
       }
