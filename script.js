@@ -1,27 +1,29 @@
 
-(function () {
-      'use strict';
+(function () { // This is an IIFE funtion. this function gets triggered the exact moment browser reads it
+      'use strict'; 
 
       const MIN_SIZE        = 200;   
-      const SCROLL_FACTOR   = 0.4; 
+      const SCROLL_FACTOR   = 0.3; 
       const THRESHOLD_RATIO = 0.95;  
-      const box = document.getElementById('box');
-      let size = MIN_SIZE;
+      const box = document.getElementById('box'); // Storing the element with id box in memory
+      let size = MIN_SIZE; // changing constant to let
 
       
       function getMaxSize() {
-        return Math.max(window.innerWidth, window.innerHeight / 1.75 );
+        return Math.max(window.innerWidth, window.innerHeight / 1.75 ); // Returning larger number amongst these
       }
 
       
       function getThreshold() {
-        return Math.min(window.innerWidth, window.innerHeight) * THRESHOLD_RATIO;
+        return Math.min(window.innerWidth, window.innerHeight) * THRESHOLD_RATIO; // Calculates when the text needs to fade in
       }
 
       function render() {
 
+        // 'size' is the current size of the box
         let boxWidth = Math.min(size, window.innerWidth);
         let boxHeight = Math.min(size * 1.75, window.innerHeight);
+        // the let statemenets makes sure that the box does not exceed browser window  
 
         box.style.width  = boxWidth + 'px';
         box.style.height = boxHeight + 'px';
@@ -32,6 +34,7 @@
           box.classList.remove('opened');
         }
 
+        // To make the black box scroll instead of main screen once the box grows to fullscreen
         if (boxWidth >= window.innerWidth && boxHeight >= window.innerHeight) {
           box.classList.add('fullscreen');
           document.body.classList.add('no-scroll');
@@ -41,6 +44,7 @@
         }
       }
 
+      // The the black boc screen exceeds more than fullscreen, this locks the box to not grow more than fullscreen
       function clampAndRender() {
         size = Math.max(MIN_SIZE, Math.min(size, getMaxSize()));
         render();
@@ -57,15 +61,15 @@
           }
         };
 
-        e.preventDefault();
+        e.preventDefault(); // While the condition is active, then main screen should not respont to wheel movements
 
-        size += e.deltaY * SCROLL_FACTOR;
+        size += e.deltaY * SCROLL_FACTOR; // Updating the size of the box
         clampAndRender();
-      }, { passive: false });
+      }, { passive: false }); // Modern browser technique
 
       window.addEventListener('resize', clampAndRender);
 
-      render();
+      render(); // Running the js file once the screen loads.
 
       const productsLink = document.querySelector('a[href="#Products"]');
       const productsArticle = document.querySelector('.products');

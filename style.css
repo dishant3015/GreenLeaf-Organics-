@@ -390,6 +390,11 @@ body.no-scroll {
     padding: 0;
 }
 
+.tip {
+    color: gray;
+    text-align: left;
+}
+
 .input-list li {
     text-align: left;
 }
